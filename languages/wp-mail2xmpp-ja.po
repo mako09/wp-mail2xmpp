@@ -1,11 +1,11 @@
-# Copyright (C) 2013 XMPP Notification
+# Copyright (C) 2013 wp_mail to XMPP 
 # This file is distributed under the same license as the XMPP Notification package.
 msgid ""
 msgstr ""
-"Project-Id-Version: XMPP Notifier 0.2\n"
-"Report-Msgid-Bugs-To: http://wordpress.org/tag/xmpp-notification\n"
-"POT-Creation-Date: 2013-12-25 12:21:33+00:00\n"
-"PO-Revision-Date: 2013-12-25 10:50+0900\n"
+"Project-Id-Version: wp_mail to XMPP 0.2\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-mail2xmpp\n"
+"POT-Creation-Date: 2013-12-26 04:59:39+00:00\n"
+"PO-Revision-Date: 2013-12-26 14:02+0900\n"
 "Last-Translator: Mako N <mako@pasero.net>\n"
 "Language-Team: Japanese\n"
 "Language: ja\n"
@@ -14,20 +14,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: xmpp-notification.php:69
+#: wp-mail2xmpp.php:68
 msgid "Jabber ID"
 msgstr "Jabber ID"
 
-#: xmpp-notification.php:121
+#: wp-mail2xmpp.php:120
 msgctxt "menu"
-msgid "XMPP Notification"
-msgstr "XMPP 通知"
+msgid "wp_mail to XMPP"
+msgstr "メールをXMPPへ"
 
-#: xmpp-notification.php:132
-msgid "XMPP Notification Settings"
-msgstr "XMPP 通知の設定"
+#: wp-mail2xmpp.php:130
+msgid "wp_mail to XMPP Settings"
+msgstr "メールを XMPP への設定"
 
-#: xmpp-notification.php:139
+#: wp-mail2xmpp.php:137
 msgid ""
 "This plugin sends XMPP notifications to the users who were registered at "
 "this site and set their own Jabber ID.  By default, email notifications are "
@@ -38,27 +38,27 @@ msgstr ""
 "送りません。メールでも通知するためにはこのオプションにチェックをつけてくださ"
 "い。"
 
-#: xmpp-notification.php:142
+#: wp-mail2xmpp.php:140
 msgid "Send email also"
 msgstr "メールでも通知する"
 
-#: xmpp-notification.php:149
+#: wp-mail2xmpp.php:147
 msgid "This plugin requires \"<a href=\"%1$s\">XMPP Enabled</a>\" plugin."
 msgstr ""
 "このプラグインには \"<a href=\"%1$s\">XMPP Enabled</a>\" プラグインが必要で"
 "す。"
 
-#: xmpp-notification.php:150
+#: wp-mail2xmpp.php:148
 msgid "Set up \"XMPP Enabled\" before you visit here."
 msgstr "事前に、\"XMPP Enabled\" を設定してください。"
 
 #. Plugin Name of the plugin/theme
-msgid "XMPP Notification"
-msgstr "XMPP Notification"
+msgid "wp_mail to XMPP"
+msgstr "wp_mail to XMPP"
 
-#. #-#-#-#-#  xmpp-notification.pot (XMPP Notification 0.2)  #-#-#-#-#
+#. #-#-#-#-#  wp-mail2xmpp.pot (wp_mail to XMPP 0.2)  #-#-#-#-#
 #. Plugin URI of the plugin/theme
-#. #-#-#-#-#  xmpp-notification.pot (XMPP Notification 0.2)  #-#-#-#-#
+#. #-#-#-#-#  wp-mail2xmpp.pot (wp_mail to XMPP 0.2)  #-#-#-#-#
 #. Author URI of the plugin/theme
 msgid "https://pasero.net/~mako/"
 msgstr "https://pasero.net/~mako/"

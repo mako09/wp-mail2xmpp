@@ -1,5 +1,5 @@
 # パッケージ名
-PACKAGE = xmpp-notification
+PACKAGE = wp-mail2xmpp
 # パッケージのタイプ。plugin または theme
 PROJECT = plugin
 # 本家 (url) より入手してインストールしておいたもの

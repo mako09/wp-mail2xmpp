@@ -18,7 +18,7 @@ Link to [WordPress](http://wordpress.org/ \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\"Your f
 
 
 === To Do ===
-* とにかくメールをすべてXMPPに送るので、notification より一般化したほうがよい。例: wp-mail2xmpp
+* とにかくメールをすべてXMPPに送るので、notification より一般化したほうがよい。例: wp-mail2xmpp, XMPP sender revisited
 
 * ほとんどのメールはXMPPの通知として受け取っても問題ないが、コンタクトフォームの場合は、除外したほうが嬉しいだろう。
 対策: 
