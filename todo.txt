@@ -1,0 +1,14 @@
+= To Do =
+* ほとんどのメールはXMPPの通知として受け取っても問題ありませんが、コンタクトフォームの場合は、除外したほうが嬉しいかもしれません。
+
+次のような対策が考えられます。
+Jetpack の場合:
+wp_mail の少し前に
+$subject = apply_filters( 'contact_form_subject', $contact_form_subject );
+があるのでこれを利用。たとえばここで $contact_form_subject = '[noxmpp]'.$contact_form_subject としておき、こちらでこれを取り除く。
+
+ContactFrom7 の場合:
+wp_mail の少し前に
+$components = compact( 'subject', 'sender', 'body', 'recipient', 'additional_headers', 'attachments' );
+$components = apply_filters_ref_array( 'wpcf7_mail_components', array( $components, &$this ) );
+があるのでこれを利用。たとえばここで additional_headers に 'X-Mailer: Contact Form 7 on WordPress\n'を追加しておき、こちらでこれを見て判断する。

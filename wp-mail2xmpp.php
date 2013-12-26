@@ -1,41 +1,40 @@
 <?php
 /**
- * Plugin Name: XMPP Notification
+ * Plugin Name: wp_mail to XMPP
  * Plugin URI: https://pasero.net/~mako/
  * Description: Almost all notifications are sent via XMPP. This plugin requires "XMPP Enabled" plugin.
- * Version: 0.2
+ * Version: 0.3
  * Author: Mako N
  * Author URI: https://pasero.net/~mako/
- * Text Domain: xmpp-notification
+ * Text Domain: wp-mail2xmpp
  * Domain Path: /languages
  * License: GPLv2 or later
  */
-new Xmpp_Notification();
+new Wp_mail2xmpp();
 
-class Xmpp_Notification {
+class Wp_mail2xmpp {
 
 	public function __construct () {
 
 		if( $this->is_active( 'xmpp-enabled/xmpp-enabled.php' ) ) {
-			/* notify via XMPP */
-			add_filter( 'wp_mail', array( &$this, 'xmpp_notification' ) );
+			add_filter( 'wp_mail', array( &$this, 'xmpp_sender' ) );
 		}
 
 		/* Internationalize the text strings used */
 		add_action( 'plugins_loaded', array( &$this, 'i18n' ), 2 );
 
-        /* Add jabber ID field */
-        add_filter('user_contactmethods', array( &$this, 'add_xmpp_field' ) );
+		/* Add jabber ID field */
+		add_filter('user_contactmethods', array( &$this, 'add_xmpp_field' ) );
 
 		/* Settings */
-		add_action( 'admin_menu', array( &$this, 'menu' ), 0 );
-}
+		add_action( 'admin_menu', array( &$this, 'menu' ), 11 ); // after "XMPP Enabled"
+	}
 
 	/** 
 	 * Checks if a plugin is activated. 
 	 * 
-     * from https://gist.github.com/miya0001/7480577#file-gistfile1-php
-     *
+	 * from https://gist.github.com/miya0001/7480577#file-gistfile1-php
+	 *
 	 * @param plugin 
 	 * @since  0.2
 	 * @return bool
@@ -55,7 +54,7 @@ class Xmpp_Notification {
 	 * @return void
 	 */
 	public function i18n() {
-		load_plugin_textdomain( 'xmpp-notification', false, basename( dirname( __FILE__ ) ) . '/languages' );
+		load_plugin_textdomain( 'wp-mail2xmpp', false, basename( dirname( __FILE__ ) ) . '/languages' );
 	}
 
 	/** 
@@ -66,18 +65,18 @@ class Xmpp_Notification {
 	 * @return array
 	 */
 	public function add_xmpp_field( $user_contact ){
-		$user_contact['jabber'] = __('Jabber ID', 'xmpp-notification'); 
+		$user_contact['jabber'] = __('Jabber ID', 'wp-mail2xmpp'); 
 		return $user_contact;
 	}
 
 	/** 
-	 * Notify via XMPP
+	 * Send massages via XMPP
 	 * 
 	 * @param parameters 
 	 * @since  0.1
 	 * @return object
 	 */
-	public function xmpp_notification ( $parameters ) {
+	public function xmpp_sender ( $parameters ) {
 		extract( $parameters ); // 'to', 'subject', 'message', 'headers', 'attachments'
 		$emails = array();
 
@@ -93,19 +92,18 @@ class Xmpp_Notification {
 				$email = $recipient;
 			}
 
-			// xmpp_send
             $jid = get_user_by( 'email', $email )->jabber;
 			if ( $jid ) {
-				xmpp_send( $jid, $message, $subject );
-			} else { // user not exist or jabber field is null
-				$emails[] = $recipient;
+				xmpp_send( $jid, $message, $subject ); // in "XMPP Enabled" plugin
+			} else {
+				$emails[] = $recipient; // not registered or don't have jabber ID
 			}
 		}
 
 		if ( get_option( 'xmpp_email_also' ) ) {
-			return $parameters; // which received as it is.
+			return $parameters;
 		} else {
-			$to = $emails; // not sent via XMPP
+			$to = $emails;
 			return compact( 'to', 'subject', 'message', 'headers', 'attachments' );
 		}
 	}
@@ -118,36 +116,35 @@ class Xmpp_Notification {
 		} else {
 			$parent = 'plugins.php';
 		}
-		add_submenu_page( $parent, _x('XMPP Notification', 'menu', 'xmpp-notification'), _x('XMPP Notification', 'menu', 'xmpp-notification'), 'administrator', 'xmpp-notification', array ( &$this, 'settings_page' ) );
+		add_submenu_page( $parent, _x('wp_mail to XMPP', 'menu', 'wp-mail2xmpp'), _x('wp_mail to XMPP', 'menu', 'wp-mail2xmpp'), 'administrator', 'wp-mail2xmpp', array ( &$this, 'settings_page' ) );
 		add_action( 'admin_init', array ( &$this, 'settings' ) );
 	}
 
 	public function settings () {
-		register_setting( 'xmpp-notification', 'xmpp_email_also' );
+		register_setting( 'wp-mail2xmpp', 'xmpp_email_also' );
 	}
-
 	public function settings_page () {
 ?>
     <div class="wrap">
-    <h2><?php _e('XMPP Notification Settings', 'xmpp-notification') ?></h2>
-<?php if( $this->is_active( 'xmpp-enabled/xmpp-enabled.php' ) ) { ?>
+    <h2><?php _e('wp_mail to XMPP Settings', 'wp-mail2xmpp') ?></h2>
+	<?php if( $this->is_active( 'xmpp-enabled/xmpp-enabled.php' ) ) { ?>
     <form method="post" action="options.php">
-        <?php settings_fields('xmpp-notification'); ?>
+        <?php settings_fields('wp-mail2xmpp'); ?>
         <table class="form-table">
             <tr valign="top">
                 <th scope="row">
-                    <?php _e('This plugin sends XMPP notifications to the users who were registered at this site and set their own Jabber ID.  By default, email notifications are not sent to them.  To send not only XMPP but also email, check this option.', 'xmpp-notification') ?></br>
+                    <?php _e('This plugin sends XMPP notifications to the users who were registered at this site and set their own Jabber ID.  By default, email notifications are not sent to them.  To send not only XMPP but also email, check this option.', 'wp-mail2xmpp') ?></br>
                     <input type="checkbox" value="1" name="xmpp_email_also" id="xmpp_email_also"
                         <?php if(get_option('xmpp_email_also', true)) echo 'checked="checked"' ?>
-                    /> <label for="xmpp_email_also"><?php _e('Send email also', 'xmpp-notification') ?></label>
+                    /> <label for="xmpp_email_also"><?php _e('Send email also', 'wp-mail2xmpp') ?></label>
                 </th>
             </tr>
         </table>
     <?php submit_button(); ?>
     </form>
 <?php } else { ?>
-    <p><?php printf( __('This plugin requires "<a href="%1$s">XMPP Enabled</a>" plugin.', 'xmpp-notification'), 'http://wordpress.org/plugins/xmpp-enabled/') ?></br>
-       <?php _e('Set up "XMPP Enabled" before you visit here.', 'xmpp-notification') ?></p>
+    <p><?php printf( __('This plugin requires "<a href="%1$s">XMPP Enabled</a>" plugin.', 'wp-mail2xmpp'), 'http://wordpress.org/plugins/xmpp-enabled/') ?></br>
+       <?php _e('Set up "XMPP Enabled" before you visit here.', 'wp-mail2xmpp') ?></p>
 <?php } ?>
     </div>
 <?php
