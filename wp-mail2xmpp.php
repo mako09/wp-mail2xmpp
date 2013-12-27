@@ -3,7 +3,7 @@
  * Plugin Name: wp_mail to XMPP
  * Plugin URI: https://pasero.net/~mako/
  * Description: Almost all notifications are sent via XMPP. This plugin requires "XMPP Enabled" plugin.
- * Version: 0.2
+ * Version: 0.3
  * Author: Mako N
  * Author URI: https://pasero.net/~mako/
  * Text Domain: wp-mail2xmpp
@@ -28,13 +28,13 @@ class Wp_mail2xmpp {
 
 		/* Settings */
 		add_action( 'admin_menu', array( &$this, 'menu' ), 11 ); // after "XMPP Enabled"
-}
+	}
 
 	/** 
 	 * Checks if a plugin is activated. 
 	 * 
-     * from https://gist.github.com/miya0001/7480577#file-gistfile1-php
-     *
+	 * from https://gist.github.com/miya0001/7480577#file-gistfile1-php
+	 *
 	 * @param plugin 
 	 * @since  0.2
 	 * @return bool
@@ -92,19 +92,18 @@ class Wp_mail2xmpp {
 				$email = $recipient;
 			}
 
-			// xmpp_send() appeared 'XMPP Enabled' plugin
             $jid = get_user_by( 'email', $email )->jabber;
 			if ( $jid ) {
-				xmpp_send( $jid, $message, $subject );
-			} else { // non-registerd users or no jabber ID
-				$emails[] = $recipient;
+				xmpp_send( $jid, $message, $subject ); // in "XMPP Enabled" plugin
+			} else {
+				$emails[] = $recipient; // not registered or don't have jabber ID
 			}
 		}
 
 		if ( get_option( 'xmpp_email_also' ) ) {
-			return $parameters; // which received as it is.
+			return $parameters;
 		} else {
-			$to = $emails; // not sent via XMPP
+			$to = $emails;
 			return compact( 'to', 'subject', 'message', 'headers', 'attachments' );
 		}
 	}
