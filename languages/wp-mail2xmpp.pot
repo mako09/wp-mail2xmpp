@@ -2,13 +2,9 @@
 # This file is distributed under the same license as the wp_mail to XMPP package.
 msgid ""
 msgstr ""
-"Project-Id-Version: wp_mail to XMPP 0.3\n"
+"Project-Id-Version: wp_mail to XMPP 0.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-mail2xmpp\n"
-<<<<<<< HEAD:languages/wp-mail2xmpp.pot
-"POT-Creation-Date: 2013-12-27 13:08:26+00:00\n"
-=======
-"POT-Creation-Date: 2013-12-28 00:52:50+00:00\n"
->>>>>>> release/0.3:languages/wp-mail2xmpp.pot
+"POT-Creation-Date: 2013-12-28 13:38:51+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -16,35 +12,35 @@ msgstr ""
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 
-#: wp-mail2xmpp.php:68
+#: wp-mail2xmpp.php:71
 msgid "Jabber ID"
 msgstr ""
 
-#: wp-mail2xmpp.php:119
+#: wp-mail2xmpp.php:157
 msgctxt "menu"
 msgid "wp_mail to XMPP"
 msgstr ""
 
-#: wp-mail2xmpp.php:129
+#: wp-mail2xmpp.php:168
 msgid "wp_mail to XMPP Settings"
 msgstr ""
 
-#: wp-mail2xmpp.php:136
+#: wp-mail2xmpp.php:175
 msgid ""
 "This plugin sends XMPP notifications to the users who were registered at "
 "this site and set their own Jabber ID.  By default, email notifications are "
 "not sent to them.  To send not only XMPP but also email, check this option."
 msgstr ""
 
-#: wp-mail2xmpp.php:139
+#: wp-mail2xmpp.php:178
 msgid "Send email also"
 msgstr ""
 
-#: wp-mail2xmpp.php:146
+#: wp-mail2xmpp.php:185
 msgid "This plugin requires \"<a href=\"%1$s\">XMPP Enabled</a>\" plugin."
 msgstr ""
 
-#: wp-mail2xmpp.php:147
+#: wp-mail2xmpp.php:186
 msgid "Set up \"XMPP Enabled\" before you visit here."
 msgstr ""
 
@@ -52,16 +48,8 @@ msgstr ""
 msgid "wp_mail to XMPP"
 msgstr ""
 
-<<<<<<< HEAD:languages/wp-mail2xmpp.pot
-#. #-#-#-#-#  wp-mail2xmpp.pot (wp_mail to XMPP 0.3)  #-#-#-#-#
-#. Plugin URI of the plugin/theme
-#. #-#-#-#-#  wp-mail2xmpp.pot (wp_mail to XMPP 0.3)  #-#-#-#-#
-#. Author URI of the plugin/theme
-msgid "https://pasero.net/~mako/"
-=======
 #. Plugin URI of the plugin/theme
 msgid "http://wordpress.org/plugins/wp-mail2xmpp/"
->>>>>>> release/0.3:languages/wp-mail2xmpp.pot
 msgstr ""
 
 #. Description of the plugin/theme
