@@ -1,9 +1,9 @@
 === wp_mail to XMPP ===
 Contributors: Mako N
 Tags: e-mail, e-mails, notification, email, emails, jabber, mail, mails, notifications, send, wp_mail, wp-mail, XMPP
-Donate link: http://example.com/
 Requires at least: 3.6
 Tested up to: 3.8
+Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,7 +22,7 @@ This plugin requires [XMPP Enabled](http://wordpress.org/plugins/xmpp-enabled/) 
 0. [XMPP Enabled](http://wordpress.org/extend/plugins/xmpp-enabled/) plugin is required.  Install it and configure.
 1. Upload the `wp-mail2xmpp` folder to your `/wp-content/plugins/` directory.
 2. Activate the plugin using the `Plugins` menu in WordPress.
-3. Go to XMPP Enabled > wp_mail to XMPP, adjust option.
+3. Go to XMPP Enabled -> wp_mail to XMPP, adjust option.
 
 == Frequently Asked Questions ==
 
@@ -30,11 +30,10 @@ This plugin requires [XMPP Enabled](http://wordpress.org/plugins/xmpp-enabled/) 
 
 == Changelog ==
 = 0.3 =
+* Public release
 * Changed plugin name.
 
 = 0.2 =
 * Initial release.
 
 == Upgrade Notice ==
-= 0.2 =
-* Initial release.
