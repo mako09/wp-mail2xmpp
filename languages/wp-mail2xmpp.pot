@@ -1,0 +1,67 @@
+# Copyright (C) 2013 wp_mail to XMPP
+# This file is distributed under the same license as the wp_mail to XMPP package.
+msgid ""
+msgstr ""
+"Project-Id-Version: wp_mail to XMPP 0.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-mail2xmpp\n"
+"POT-Creation-Date: 2013-12-28 00:52:50+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: wp-mail2xmpp.php:68
+msgid "Jabber ID"
+msgstr ""
+
+#: wp-mail2xmpp.php:119
+msgctxt "menu"
+msgid "wp_mail to XMPP"
+msgstr ""
+
+#: wp-mail2xmpp.php:129
+msgid "wp_mail to XMPP Settings"
+msgstr ""
+
+#: wp-mail2xmpp.php:136
+msgid ""
+"This plugin sends XMPP notifications to the users who were registered at "
+"this site and set their own Jabber ID.  By default, email notifications are "
+"not sent to them.  To send not only XMPP but also email, check this option."
+msgstr ""
+
+#: wp-mail2xmpp.php:139
+msgid "Send email also"
+msgstr ""
+
+#: wp-mail2xmpp.php:146
+msgid "This plugin requires \"<a href=\"%1$s\">XMPP Enabled</a>\" plugin."
+msgstr ""
+
+#: wp-mail2xmpp.php:147
+msgid "Set up \"XMPP Enabled\" before you visit here."
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "wp_mail to XMPP"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://wordpress.org/plugins/wp-mail2xmpp/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Almost all notifications are sent via XMPP. This plugin requires \"XMPP "
+"Enabled\" plugin."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Mako N"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://pasero.net/~mako/"
+msgstr ""
