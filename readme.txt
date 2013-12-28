@@ -10,7 +10,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Send almost all notifications via XMPP instead of email
 
 == Description ==
-This plugin sends XMPP notifications to the users who were registered and set their own Jabber ID.  Emails to them are able to be suppressed.
+This plugin sends XMPP notifications to the users who are registered and set their own Jabber ID.  Emails to them are able to be suppressed.
 
 This plugin provides a function to be added 'wp_mail' hook in `wp_mail()` located in `wp-includes/pluggable.php`.
 
