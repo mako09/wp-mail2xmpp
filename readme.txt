@@ -1,5 +1,5 @@
 === wp_mail to XMPP ===
-Contributors: Mako N
+Contributors: mako09
 Tags: e-mail, e-mails, notification, email, emails, jabber, mail, mails, notifications, send, wp_mail, wp-mail, XMPP
 Requires at least: 3.6
 Tested up to: 3.8
