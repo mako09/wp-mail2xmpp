@@ -3,7 +3,7 @@
  * Plugin Name: wp_mail to XMPP
  * Plugin URI: http://wordpress.org/plugins/wp-mail2xmpp/
  * Description: Almost all notifications are sent via XMPP. This plugin requires "XMPP Enabled" plugin.
- * Version: 0.3
+ * Version: 0.4
  * Author: Mako N
  * Author URI: http://pasero.net/~mako/
  * Text Domain: wp-mail2xmpp
@@ -24,7 +24,10 @@ class Wp_mail2xmpp {
 		add_action( 'plugins_loaded', array( &$this, 'i18n' ), 2 );
 
 		/* Add jabber ID field */
-		add_filter('user_contactmethods', array( &$this, 'add_xmpp_field' ) );
+		add_filter( 'user_contactmethods', array( &$this, 'add_xmpp_field' ) );
+
+		/* get JID from email address */
+		add_filter( 'email_to_jid', array( &$this, 'email2jid' ), 10 );
 
 		/* Settings */
 		add_action( 'admin_menu', array( &$this, 'menu' ), 11 ); // after "XMPP Enabled"
@@ -72,13 +75,33 @@ class Wp_mail2xmpp {
 	/** 
 	 * Send massages via XMPP
 	 * 
+	 * Using 'abort_xmpp_sender' hook allow abort all processing.
+	 * For example, you want to send email independent of user or
+	 * JID when the subject has a particular keyword.  You may add
+	 * a function which checks the subject and returns true if
+	 * keyword is found.
+	 *
+	 * Using 'email_to_jid' hook allow set/unset JID correspond to
+	 * email address.
+	 * Default function of this hook, email2jid() returns JID when
+	 * the user is registered to the site and his/her JID is set.
+	 * If you want to send email but XMPP to a particular user, add
+	 * a function which returns false.
+	 *
 	 * @param parameters 
 	 * @since  0.1
-	 * @return object
+	 * @uses apply_filters() Calls 'abort_xmpp_sender'
+	 * @uses apply_filters() Calls 'email_to_jid'
+	 * @return
 	 */
 	public function xmpp_sender ( $parameters ) {
 		extract( $parameters ); // 'to', 'subject', 'message', 'headers', 'attachments'
 		$emails = array();
+
+		$abort = false;
+		if ( apply_filters( 'abort_xmpp_sender', $abort, $patameters) ) {
+			return $parameters;
+		}
 
 		// Set destination addresses
 		if ( ! is_array( $to ) )
@@ -92,7 +115,9 @@ class Wp_mail2xmpp {
 				$email = $recipient;
 			}
 
-            $jid = get_user_by( 'email', $email )->jabber;
+			unset( $jid );
+			$jid = apply_filters( 'email_to_jid', $email, $jid, $subject, $message, $headers, $attachments );
+
 			if ( $jid ) {
 				xmpp_send( $jid, $message, $subject ); // in "XMPP Enabled" plugin
 			} else {
@@ -106,6 +131,19 @@ class Wp_mail2xmpp {
 			$to = $emails;
 			return compact( 'to', 'subject', 'message', 'headers', 'attachments' );
 		}
+	}
+
+	/** 
+	 * Search JID from email address
+	 *
+	 * return false if the user is not registered or his/her JID is not set
+	 * 
+	 * @param email 
+	 * @since  0.4
+	 * @return text
+	 */
+	public function email2jid( $email ) {
+		return get_user_by( 'email', $email )->jabber;
 	}
 
 /* ----- settings section -------- */
@@ -123,6 +161,7 @@ class Wp_mail2xmpp {
 	public function settings () {
 		register_setting( 'wp-mail2xmpp', 'xmpp_email_also' );
 	}
+
 	public function settings_page () {
 ?>
     <div class="wrap">
