@@ -1,6 +1,6 @@
 === wp_mail to XMPP ===
 Contributors: mako09
-Tags: e-mail, e-mails, notification, email, emails, jabber, mail, mails, notifications, send, wp_mail, wp-mail, XMPP
+Tags: e-mail, e-mails, email, emails, jabber, mail, mails, notification, notifications, send, wp-mail, wp_mail, XMPP
 Requires at least: 3.6
 Tested up to: 3.8
 Stable tag: trunk
@@ -28,7 +28,7 @@ Using 'email_to_jid' hook allow set/unset JID correspond to email address.  Defa
 1. Upload the `wp-mail2xmpp` folder to your `/wp-content/plugins/` directory.
 2. Activate the plugin using the `Plugins` menu in WordPress.
 3. Go to XMPP Enabled -> wp_mail to XMPP, adjust option.
-
+4. Set each user's JID to Jabber ID field in his/har profile page.
 
 == Changelog ==
 = 0.4 =
