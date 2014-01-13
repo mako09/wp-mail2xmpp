@@ -43,10 +43,10 @@ class Wp_mail2xmpp {
 	 * @return bool
 	 */
 	private function is_active( $plugin ) {
-		if (function_exists('is_plugin_active')) {
-			return is_plugin_active($plugin);
+		if ( function_exists( 'is_plugin_active' ) ) {
+			return is_plugin_active( $plugin );
 		} else {
-			return in_array( $plugin, get_option('active_plugins') );
+			return in_array( $plugin, get_option( 'active_plugins' ) );
 		}
 	}
 
@@ -174,7 +174,7 @@ class Wp_mail2xmpp {
                 <th scope="row">
                     <?php _e('This plugin sends XMPP notifications to the users who were registered at this site and set their own Jabber ID.  By default, email notifications are not sent to them.  To send not only XMPP but also email, check this option.', 'wp-mail2xmpp') ?></br>
                     <input type="checkbox" value="1" name="xmpp_email_also" id="xmpp_email_also"
-                        <?php if(get_option('xmpp_email_also', true)) echo 'checked="checked"' ?>
+                        <?php if( get_option( 'xmpp_email_also' ) ) echo 'checked="checked"' ?>
                     /> <label for="xmpp_email_also"><?php _e('Send email also', 'wp-mail2xmpp') ?></label>
                 </th>
             </tr>
