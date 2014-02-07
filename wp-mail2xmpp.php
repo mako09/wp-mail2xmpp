@@ -99,7 +99,7 @@ class Wp_mail2xmpp {
 		$emails = array();
 
 		$abort = false;
-		if ( apply_filters( 'abort_xmpp_sender', $abort, $patameters) ) {
+		if ( apply_filters( 'abort_xmpp_sender', $abort, $parameters ) ) {
 			return $parameters;
 		}
 
