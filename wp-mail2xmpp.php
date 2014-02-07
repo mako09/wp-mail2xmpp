@@ -3,7 +3,7 @@
  * Plugin Name: wp_mail to XMPP
  * Plugin URI: http://wordpress.org/plugins/wp-mail2xmpp/
  * Description: Almost all notifications are sent via XMPP. This plugin requires "XMPP Enabled" plugin.
- * Version: 0.4
+ * Version: 0.4.1
  * Author: Mako N
  * Author URI: http://pasero.net/~mako/
  * Text Domain: wp-mail2xmpp
@@ -99,7 +99,7 @@ class Wp_mail2xmpp {
 		$emails = array();
 
 		$abort = false;
-		if ( apply_filters( 'abort_xmpp_sender', $abort, $patameters) ) {
+		if ( apply_filters( 'abort_xmpp_sender', $abort, $parameters ) ) {
 			return $parameters;
 		}
 
