@@ -31,6 +31,7 @@ class Wp_mail2xmpp {
 
 		/* Settings */
 		add_action( 'admin_menu', array( &$this, 'menu' ), 11 ); // after "XMPP Enabled"
+		add_action( 'admin_init', array ( &$this, 'settings' ) );
 	}
 
 	/** 
@@ -125,7 +126,8 @@ class Wp_mail2xmpp {
 			}
 		}
 
-		if ( get_option( 'xmpp_email_also' ) ) {
+		$options = get_option( 'wp-mail2xmpp' );
+		if ( $options['xmpp_email_also'] ) {
 			return $parameters;
 		} else {
 			$to = $emails;
@@ -154,32 +156,36 @@ class Wp_mail2xmpp {
 		} else {
 			$parent = 'plugins.php';
 		}
-		add_submenu_page( $parent, _x('wp_mail to XMPP', 'menu', 'wp-mail2xmpp'), _x('wp_mail to XMPP', 'menu', 'wp-mail2xmpp'), 'administrator', 'wp-mail2xmpp', array ( &$this, 'settings_page' ) );
-		add_action( 'admin_init', array ( &$this, 'settings' ) );
+		add_submenu_page( $parent, _x('wp_mail to XMPP', 'menu', 'wp-mail2xmpp'), _x('wp_mail to XMPP', 'menu', 'wp-mail2xmpp'), 'manage_options', __FILE__, array ( &$this, 'settings_page' ) );
 	}
 
 	public function settings () {
-		register_setting( 'wp-mail2xmpp', 'xmpp_email_also' );
+		register_setting( 'wp-mail2xmpp', 'wp-mail2xmpp' );
+		add_settings_section( 'main', __('wp_mail to XMPP Settings', 'wp-mail2xmpp' ), array( &$this, 'main_text' ), __FILE__ );
+		add_settings_field( 'xmpp_email_also', __('Send email also', 'wp-mail2xmpp' ), array( &$this, 'xmpp_email_also' ), __FILE__, 'main' );
+	}
+
+	public function main_text () {
+		echo '<p>' . __('This plugin sends XMPP notifications to the users who were registered at this site and set their own Jabber ID.  By default, email notifications are not sent to them.  To send not only XMPP but also email, check this option.', 'wp-mail2xmpp') . '</p>';
+	}
+
+	public function xmpp_email_also () {
+		$options = get_option( 'wp-mail2xmpp' );
+		if( $options['xmpp_email_also'] ) $checked = ' checked="checked" ';
+?>
+		<input type="checkbox" value="1" name="wp-mail2xmpp[xmpp_email_also]" id="xmpp_email_also" <?php echo $checked; ?> />
+<?php
 	}
 
 	public function settings_page () {
 ?>
     <div class="wrap">
-    <h2><?php _e('wp_mail to XMPP Settings', 'wp-mail2xmpp') ?></h2>
 	<?php if( $this->is_active( 'xmpp-enabled/xmpp-enabled.php' ) ) { ?>
     <form method="post" action="options.php">
-        <?php settings_fields('wp-mail2xmpp'); ?>
-        <table class="form-table">
-            <tr valign="top">
-                <th scope="row">
-                    <?php _e('This plugin sends XMPP notifications to the users who were registered at this site and set their own Jabber ID.  By default, email notifications are not sent to them.  To send not only XMPP but also email, check this option.', 'wp-mail2xmpp') ?></br>
-                    <input type="checkbox" value="1" name="xmpp_email_also" id="xmpp_email_also"
-                        <?php if( get_option( 'xmpp_email_also' ) ) echo 'checked="checked"' ?>
-                    /> <label for="xmpp_email_also"><?php _e('Send email also', 'wp-mail2xmpp') ?></label>
-                </th>
-            </tr>
-        </table>
-    <?php submit_button(); ?>
+		<?php settings_fields('wp-mail2xmpp'); ?>
+		<?php do_settings_sections( __FILE__ ); ?>
+
+		<?php submit_button(); ?>
     </form>
 <?php } else { ?>
     <p><?php printf( __('This plugin requires "<a href="%1$s">XMPP Enabled</a>" plugin.', 'wp-mail2xmpp'), 'http://wordpress.org/plugins/xmpp-enabled/') ?></br>

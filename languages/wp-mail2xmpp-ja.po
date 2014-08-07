@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: wp_mail to XMPP 0.4\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/wp-mail2xmpp\n"
-"POT-Creation-Date: 2013-12-28 13:38:51+00:00\n"
+"POT-Creation-Date: 2014-08-07 05:01:10+00:00\n"
 "PO-Revision-Date: 2013-12-28 20:41+0900\n"
 "Last-Translator: Mako N <mako@pasero.net>\n"
 "Language-Team: Japanese\n"
@@ -14,20 +14,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: wp-mail2xmpp.php:71
+#: wp-mail2xmpp.php:72
 msgid "Jabber ID"
 msgstr "Jabber ID"
 
-#: wp-mail2xmpp.php:157
+#: wp-mail2xmpp.php:159
 msgctxt "menu"
 msgid "wp_mail to XMPP"
 msgstr "メールをXMPPへ"
 
-#: wp-mail2xmpp.php:168
+#: wp-mail2xmpp.php:164
 msgid "wp_mail to XMPP Settings"
 msgstr "メールを XMPP への設定"
 
-#: wp-mail2xmpp.php:175
+#: wp-mail2xmpp.php:165
+msgid "Send email also"
+msgstr "メールでも通知する"
+
+#: wp-mail2xmpp.php:169
 msgid ""
 "This plugin sends XMPP notifications to the users who were registered at "
 "this site and set their own Jabber ID.  By default, email notifications are "
@@ -38,17 +42,13 @@ msgstr ""
 "送りません。メールでも通知するためにはこのオプションにチェックをつけてくださ"
 "い。"
 
-#: wp-mail2xmpp.php:178
-msgid "Send email also"
-msgstr "メールでも通知する"
-
-#: wp-mail2xmpp.php:185
+#: wp-mail2xmpp.php:191
 msgid "This plugin requires \"<a href=\"%1$s\">XMPP Enabled</a>\" plugin."
 msgstr ""
 "このプラグインには \"<a href=\"%1$s\">XMPP Enabled</a>\" プラグインが必要で"
 "す。"
 
-#: wp-mail2xmpp.php:186
+#: wp-mail2xmpp.php:192
 msgid "Set up \"XMPP Enabled\" before you visit here."
 msgstr "事前に、\"XMPP Enabled\" を設定してください。"
 
