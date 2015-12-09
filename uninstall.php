@@ -3,7 +3,7 @@
 if ( !defined( 'WP_UNINSTALL_PLUGIN' ) )
     exit();
 
-$option_name = 'xmpp_email_also';
+$option_name = 'wp-mail2xmpp';
 
 if ( !is_multisite() ) { // For Single site
     delete_option( $option_name );
