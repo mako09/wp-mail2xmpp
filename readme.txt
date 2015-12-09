@@ -2,7 +2,7 @@
 Contributors: mako09
 Tags: e-mail, e-mails, email, emails, jabber, mail, mails, notification, notifications, send, wp-mail, wp_mail, XMPP
 Requires at least: 3.6
-Tested up to: 3.8
+Tested up to: 4.4
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -31,6 +31,9 @@ Using 'email_to_jid' hook allow set/unset JID correspond to email address.  Defa
 4. Set each user's JID to Jabber ID field in his/har profile page.
 
 == Changelog ==
+= 1.0 =
+* Rearranged settings page.
+
 = 0.4 =
 * Created hooks.
 
